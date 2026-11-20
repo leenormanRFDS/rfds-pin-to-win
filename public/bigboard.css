@@ -1,0 +1,23 @@
+:root{--navy:#00205b;--red:#c74413;--orange:#f05b22;--paper:#f9f8f5;--line:#3b5480}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{background:radial-gradient(circle at 70% 0,#0b2f74 0,var(--navy) 55%);color:#fff;font-family:"museo-sans",Arial,sans-serif;-webkit-font-smoothing:antialiased;display:flex;flex-direction:column;padding:3vh 4vw;overflow:hidden}
+.bb-head{display:flex;align-items:center;gap:2.5vw;padding-bottom:2.5vh;border-bottom:1px solid var(--line)}
+.bb-head img{width:clamp(80px,8vw,140px);height:auto;background:#fff;border-radius:12px;padding:8px}
+.bb-title p{margin:0 0 .6vh;color:#c3d1e8;font-size:clamp(14px,1.3vw,22px)}
+.bb-title h1{margin:0;font-size:clamp(32px,3.6vw,64px);letter-spacing:-.03em;line-height:1.05}
+.bb-cta{margin-left:auto;text-align:right;display:flex;flex-direction:column;gap:.4vh}
+.bb-cta strong{color:var(--orange);font-size:clamp(18px,1.8vw,32px)}.bb-cta span{color:#c3d1e8;font-size:clamp(14px,1.2vw,20px)}
+main{flex:1;display:flex;flex-direction:column;min-height:0}
+.bb-rows{list-style:none;margin:2vh 0 0;padding:0;display:grid;grid-template-rows:repeat(10,minmax(0,1fr));flex:1;min-height:0}
+.bb-rows li{display:grid;grid-template-columns:6vw 1fr auto;align-items:center;gap:2vw;padding:0 1.5vw;border-bottom:1px solid rgba(255,255,255,.08);font-size:clamp(20px,2.4vw,44px)}
+.bb-rows li:nth-child(-n+3) .bb-rank{color:var(--orange)}
+.bb-rank{font-weight:700;color:#8fa4c6;font-variant-numeric:tabular-nums}
+.bb-name{font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:flex;align-items:center;gap:1.2vw}
+.bb-name em{font-style:normal;font-size:.45em;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);background:#59ddb2;padding:.35em .7em;border-radius:99px}
+.bb-score{font-weight:700;font-variant-numeric:tabular-nums}
+.bb-rows li.fresh{animation:fresh 2.4s ease-out}
+@keyframes fresh{0%{background:rgba(89,221,178,.35)}100%{background:transparent}}
+.bb-empty{grid-template-columns:1fr!important;color:#c3d1e8;justify-items:center}
+.bb-status{margin:1.5vh 0 0;color:#8fa4c6;font-size:clamp(12px,1vw,16px);text-align:right}
+@media(prefers-reduced-motion:reduce){.bb-rows li.fresh{animation:none;background:rgba(89,221,178,.18)}}

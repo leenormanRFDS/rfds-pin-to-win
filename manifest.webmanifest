@@ -1,0 +1,13 @@
+{
+  "name": "Pin to Win · RFDS Flight Crew Challenge",
+  "short_name": "Pin to Win",
+  "start_url": "/",
+  "scope": "/",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "background_color": "#F9F8F5",
+  "theme_color": "#00205B",
+  "icons": [
+    { "src": "/public/rfds-logo.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="referrer" content="same-origin">
+<title>Leaderboard admin | RFDS Pin to Win</title>
+<link rel="stylesheet" href="/public/admin.css?v=130"><script src="/public/admin.js?v=130" defer></script>
+</head>
+<body>
+<header class="staff-header"><a href="/" aria-label="Back to Pin to Win"><img src="/public/rfds-logo.svg" alt="Royal Flying Doctor Service, South Australia and Northern Territory" width="80" height="74"></a><div class="actions"><a href="/board.html" class="button secondary" target="_blank" rel="noopener">Open big-screen board</a><a href="/" class="button secondary">Back to game</a></div></header>
+<main>
+<section id="loginView" class="login panel" aria-labelledby="loginTitle">
+<p class="eyebrow">Staff access</p><h1 id="loginTitle">Admin sign-in</h1><p>Manage high scores and download game records.</p>
+<form id="loginForm"><label for="password">Admin password</label><input id="password" type="password" autocomplete="current-password" required><button id="loginBtn" class="primary" type="submit">Sign in</button><p id="loginError" class="error" role="alert"></p></form>
+</section>
+<div id="app" hidden>
+<div class="page-heading"><div><p class="eyebrow">Pin to Win · Staff dashboard</p><h1>Leaderboard admin</h1></div><button id="logoutBtn" class="secondary">Sign out</button></div>
+<p id="adminStatus" class="notice" role="status" aria-live="polite"></p>
+<div id="reviewBanner" class="review-banner" hidden><p id="reviewText"></p><button id="showReview" class="primary" type="button">Review scores</button></div>
+<section class="panel" aria-labelledby="boardTitle">
+<div class="toolbar"><div><h2 id="boardTitle">All-time high scores</h2><p class="note">The current public top 20. Scores stay until you remove them.</p></div><div class="actions"><button id="refreshBoard" class="secondary">Refresh</button><button id="boardCsv" class="primary" disabled>Download leaderboard CSV</button><button id="clearBoard" class="danger">Clear leaderboard</button></div></div>
+<div id="boardTable" class="table-wrap" tabindex="0" aria-label="High scores"></div>
+</section>
+<section class="panel" aria-labelledby="gamesTitle">
+<div class="toolbar"><div><h2 id="gamesTitle">Game history</h2><p class="note">Remove an attempt from the board, restore an archived score, or approve a score held for review.</p></div><button id="gamesCsv" class="primary">Download all games CSV</button></div>
+<form id="filters" class="filters"><div><label for="scoreDay">Date (optional)</label><input id="scoreDay" type="date"></div><div><label for="visibility">Show</label><select id="visibility"><option value="all">All games</option><option value="visible">Not removed</option><option value="hidden">Removed scores</option><option value="review">Waiting for review</option></select></div><button class="secondary" type="submit">Apply filters</button><button id="resetFilters" class="secondary" type="button">All dates</button></form>
+<p id="scoresStatus" class="note inset" role="status"></p><div id="scoresTable" class="table-wrap" tabindex="0" aria-label="Game history"></div><div class="pagination"><button id="prevPage" class="secondary">Previous</button><span id="pageLabel">Page 1</span><button id="nextPage" class="secondary">Next</button></div>
+<p class="note inset">Scores are held for review when pins arrive faster than a person can play, when all three pins are within a few kilometres, or when a very high score was played offline. Approving restores the score to the board. CSV includes all pages for the selected filters, with email (if provided), organisation, status and review notes. Removing one attempt may reveal that player’s next-best score.</p>
+</section>
+<section class="panel" aria-labelledby="statsTitle">
+<div class="toolbar"><div><h2 id="statsTitle">Destination difficulty</h2><p class="note">How far off players are for each destination, across every game in this event. Use it to rebalance the difficulty ratings in data/destinations.js.</p></div><div class="actions"><button id="loadStats" class="secondary">Load statistics</button><button id="statsCsv" class="secondary" disabled>Download CSV</button></div></div>
+<div id="statsTable" class="table-wrap" tabindex="0" aria-label="Destination difficulty"><p class="empty">Load statistics to see the table.</p></div>
+</section>
+<section class="panel" aria-labelledby="eoiTitle"><div class="toolbar"><div><h2 id="eoiTitle">Contact requests</h2><p id="eoiCount" class="note">Loading entries…</p></div><div class="actions"><button id="eoiCsv" class="secondary" disabled>Download CSV</button><button id="deviceBackup" class="secondary">Export device backup</button></div></div><p class="note inset">From v1.3, only players who tick “contact me” are recorded here. Earlier entries show “Not recorded” because consent wasn’t captured at the time; check with your privacy team before contacting them.</p><div id="eoiTable" class="table-wrap" tabindex="0" aria-label="Contact requests"></div></section>
+<p class="note">Scores are saved in Supabase. Removed games remain in the archive for downloads and restoration. Device backups belong to this browser; keep unsynced records until they reach the cloud.</p>
+</div>
+</main>
+<dialog id="clearDialog" aria-labelledby="clearTitle"><form id="clearForm"><h2 id="clearTitle">Clear the leaderboard?</h2><p>This removes all currently completed games from the public board across every date. Game records and captured entries are kept. You can restore individual scores in Game history.</p><p>Download a CSV first if you need a copy. New and in-progress games will continue normally.</p><label for="clearText">Type CLEAR LEADERBOARD</label><input id="clearText" autocomplete="off" spellcheck="false"><p id="clearError" class="error" role="alert"></p><div class="actions"><button id="cancelClear" type="button" class="secondary">Cancel</button><button id="confirmClear" type="submit" class="danger" disabled>Clear leaderboard</button></div></form></dialog>
+</body>
+</html>
