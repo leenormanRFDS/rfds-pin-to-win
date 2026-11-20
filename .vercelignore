@@ -1,0 +1,10 @@
+# Not part of the live site
+tests/
+dev-server.js
+server.js
+supabase/
+README.md
+UX_CHANGES.md
+NT_LOCATIONS.md
+metadata.json
+.gitignore
