@@ -1,6 +1,8 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
+  "buildCommand": "",
+  "outputDirectory": ".",
   "regions": ["syd1"],
   "headers": [
     {
